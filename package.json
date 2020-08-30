@@ -1,0 +1,32 @@
+{
+  "name": "realtime-chat",
+  "version": "1.0.0",
+  "description": "Realtime chat application with web sockets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Natsu29/realtime-chat.git"
+  },
+  "keywords": [
+    "realtime",
+    "chat",
+    "websocket",
+    "socket.io",
+    "express",
+    "room"
+  ],
+  "author": "Natsu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Natsu29/realtime-chat/issues"
+  },
+  "homepage": "https://github.com/Natsu29/realtime-chat#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
