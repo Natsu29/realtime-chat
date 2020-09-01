@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+    <script>
+      const roomid = "<%= roomID %>";
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <header><%- include('../partials/header') %></header>
+    <main class="jumbotron">
+      <div class="m-area">
+        <div class="messages">
+          <div class="message">Hello</div>
+          <div class="message">Hi</div>
+        </div>
+        <div class="input-area">
+          <input type="text" id="msg" placeholder="Enter your message here!" />
+          <button id="send">Send</button>
+        </div>
+      </div>
+    </main>
+    <footer><%- include('../partials/footer') %></footer>
+    <script src="/js/chat.js"></script>
+  </body>
+</html>

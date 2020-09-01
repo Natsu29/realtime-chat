@@ -1,0 +1,95 @@
+:root {
+  --nav-height: 80px;
+}
+.sc-container {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.scprofile {
+  margin-top: 5px;
+  background: black;
+  width: 40px;
+  margin-left: 10px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+li a {
+  color: white;
+}
+
+.jumbotron {
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.card-container {
+  max-width: 70vw;
+  margin: 0 auto;
+  background-color: #fffff2;
+  padding: 12px;
+}
+
+.card-container .ul-container {
+  margin: 10px;
+  padding: 5px;
+  list-style-type: none;
+}
+
+.card-container .ul-container .list-item {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #bcbcbc;
+  border-radius: 3px;
+  height: 64px;
+  justify-content: center;
+  text-decoration: none;
+}
+.list-item:hover {
+  background-color: white;
+  transform: translateY(1px);
+}
+
+.m-area {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 12px;
+  min-height: 50vh;
+  background: white;
+  border: 1px solid black;
+  border-radius: 2px;
+  height: 60vh;
+}
+
+.messages {
+  height: 90%;
+}
+.message {
+  margin: 2px;
+  padding: 5px;
+  border: 1px solid #bcbcbc;
+  height: 50px;
+  border-radius: 3px;
+}
+
+.input-area {
+  margin-top: auto;
+}
+
+#msg {
+  width: 80%;
+  text-align: start;
+  height: 40px;
+}
+
+#send {
+  width: 50px;
+  height: 40px;
+  color: black;
+  padding: 2px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+}

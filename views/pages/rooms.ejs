@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <header><%- include('../partials/header') %></header>
+    <main class="jumbotron">
+      <div class="card-container">
+        <ul class="ul-container">
+          <a
+            id="room1"
+            href="/chat/room1"
+            onclick="gotochat(this.id)"
+            class="list-item"
+          >
+            Room 1
+          </a>
+          <a
+            id="room2"
+            href="/chat/room2"
+            onclick="gotochat(this.id)"
+            class="list-item"
+          >
+            Room 2
+          </a>
+          <a
+            id="room3"
+            href="/chat/room3"
+            onclick="gotochat(this.id)"
+            class="list-item"
+          >
+            Room 3
+          </a>
+          <a
+            id="room4"
+            href="/chat/room4"
+            onclick="gotochat(this.id)"
+            class="list-item"
+          >
+            Room 4
+          </a>
+        </ul>
+      </div>
+    </main>
+    <footer><%- include('../partials/footer') %></footer>
+    <script src="/js/rooms.js"></script>
+  </body>
+</html>
