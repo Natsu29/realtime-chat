@@ -6,15 +6,23 @@
       const roomid = "<%= roomID %>";
     </script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
   </head>
   <body>
     <header><%- include('../partials/header') %></header>
     <main class="jumbotron">
-      <div class="m-area">
-        <div class="messages">
-          <div class="message">Hello</div>
-          <div class="message">Hi</div>
-        </div>
+      <div class="m-area-1 d-flex fd-r" style="height: 34px">
+        <button id="delr" class="btn btn-danger">DelR</button>
+        <input
+          style="width: 300px; height: 32px"
+          type="text"
+          id="username"
+          placeholder="enter your user name here!"
+        />
+      </div>
+      <div class="m-area mt-2">
+        <div class="messages" style="overflow: scroll"></div>
         <div class="input-area">
           <input type="text" id="msg" placeholder="Enter your message here!" />
           <button id="send">Send</button>

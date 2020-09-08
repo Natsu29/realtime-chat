@@ -62,10 +62,24 @@ li a {
   border-radius: 2px;
   height: 60vh;
 }
+.m-area-1 {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 12px;
+  min-height: 50px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 2px;
+  height: 60vh;
+}
 
 .messages {
   height: 90%;
 }
+.messages::-webkit-scrollbar-button {
+  display: none;
+}
+
 .message {
   margin: 2px;
   padding: 5px;

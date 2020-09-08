@@ -39,5 +39,7 @@ createroom.addEventListener("click", function () {
   };
   let key = firebase.database().ref("/rooms").push().key;
   obj.room_id = key;
-  firebase.database().ref("/rooms").child(key).set(obj);
+  if (room_name) {
+    firebase.database().ref("/rooms").child(key).set(obj);
+  }
 });
