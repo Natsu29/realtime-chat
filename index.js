@@ -3,6 +3,7 @@ const app = express();
 const url = require("url");
 const firebase = require("firebase/app");
 require("firebase/database");
+let PORT = 3000 || process.env.PORT;
 app.use(express.static(__dirname + "/public"));
 app.use(express.json());
 //=============================================//
@@ -54,4 +55,4 @@ io.on("connection", (socket) => {
   });
 });
 
-http.listen(4200, () => console.log("Server started at port 4200."));
+http.listen(PORT, () => console.log("Server started at port " + PORT));
