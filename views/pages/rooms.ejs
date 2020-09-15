@@ -10,7 +10,10 @@
   <body>
     <header><%- include('../partials/header') %></header>
     <main class="jumbotron">
-      <button id="croom" class="btn btn-success">Create Room</button>
+      <div class="card-container" style="border: 1pxs solid #bababa">
+        <button id="croom" class="btn btn-success">Create Room</button>
+        <a id="croom" href="/chat/bot" class="btn btn-danger">Chat with bot</a>
+      </div>
       <div class="card-container">
         <ul id="ulcontainer" class="ul-container"></ul>
       </div>

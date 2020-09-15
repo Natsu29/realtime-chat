@@ -38,16 +38,53 @@ firebase
 let send = document.querySelector("#send");
 let delr = document.querySelector("#delr");
 send.addEventListener("click", () => {
-  let messages = document.querySelector(".messages");
-  let msg = document.querySelector("#msg");
-  let username = document.querySelector("#username");
-  let message = document.createElement("div");
+  if (roomid === "bot") {
+    let messages = document.querySelector(".messages");
+    let msg = document.querySelector("#msg");
+    let username = document.querySelector("#username");
+    let message = document.createElement("div");
 
-  message.innerHTML = `<div class="message"><strong>${username.value}:</strong> ${msg.value}</div>`;
-  messages.append(message);
-  socket.emit("message-sent", msg.value, username.value);
-  msg.value = "";
-  messages.scrollTop = messages.scrollHeight;
+    message.innerHTML = `<div class="message"><strong>${username.value}:</strong> ${msg.value}</div>`;
+    messages.append(message);
+    // socket.emit("message-sent", msg.value, username.value);
+    messages.scrollTop = messages.scrollHeight;
+    async function getData() {
+      let resp = await fetch("http://localhost:5000/", {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ hello: msg.value }),
+      });
+
+      return resp;
+    }
+    let resp = getData();
+    resp.then(function (response) {
+      return response.text().then(function (text) {
+        console.log(text);
+        msg.value = "";
+        let bm = document.createElement("div");
+        bm.innerHTML = `<div class="message"><strong>[Bot]:</strong> ${text}</div>`;
+        messages.append(bm);
+        messages.scrollTop = messages.scrollHeight;
+      });
+    });
+  } else {
+    let messages = document.querySelector(".messages");
+    let msg = document.querySelector("#msg");
+    let username = document.querySelector("#username");
+    let message = document.createElement("div");
+
+    message.innerHTML = `<div class="message"><strong>${username.value}:</strong> ${msg.value}</div>`;
+    messages.append(message);
+    socket.emit("message-sent", msg.value, username.value);
+    msg.value = "";
+    messages.scrollTop = messages.scrollHeight;
+  }
 });
 
 socket.on("message-received", (msg, user) => {
