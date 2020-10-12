@@ -22,12 +22,8 @@ firebase
     snapshot.forEach(function (cval) {
       let ckey = cval.key;
       let cdata = cval.val();
-      let link = document.createElement("a");
-      link.id = cdata.room_id;
-      link.innerText = cdata.room_name;
-      link.href = "/chat/" + cdata.room_id;
-      link.classList.add("list-item");
-      ul_container.append(link);
+      ul_container.innerHTML += `<a class="list-item" id="${cdata.room_id}" href="/chat/${cdata.room_id}">${cdata.room_name}</a>`
+      
     });
   });
 
@@ -37,9 +33,11 @@ createroom.addEventListener("click", function () {
     room_id: "",
     room_name: room_name,
   };
-  let key = firebase.database().ref("/rooms").push().key;
-  obj.room_id = key;
+
+  
   if (room_name) {
+    let key = firebase.database().ref("/rooms").push().key;
+    obj.room_id = key;
     firebase.database().ref("/rooms").child(key).set(obj);
   }
 });
