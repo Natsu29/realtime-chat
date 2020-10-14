@@ -1,3 +1,8 @@
+//taking messages element refrences.
+let tm = document.querySelector(".messages");
+//
+let username = document.querySelector("#username");
+
 var firebaseConfig = {
   apiKey: "AIzaSyDyD62apXjkfB7bzxleKKRnqz0S20X1wVk",
   authDomain: "fir-968e0.firebaseapp.com",
@@ -11,32 +16,37 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 let socket = io();
-let tm = document.querySelector(".messages");
-socket.emit("join-room", roomid, "Unknown");
+
+socket.emit("join-room", roomid, username.value);
 socket.on("user-connected", (user) => {
   console.log("user name is " + user);
 });
 
+
+
+//loading pervious message when a room is open.
 firebase
   .database()
   .ref(`/rooms/${roomid}/`)
   .once("value", function (snapshot) {
     tm.innerHTML = "";
-    snapshot.forEach(function (message) {
-      message.forEach(function (m) {
-        let mbody = document.createElement("div");
-        mbody.classList.add("message");
-        mbody.innerHTML = `<strong>${m.val().username}:</strong> ${
-          m.val().message
-        }`;
-        tm.append(mbody);
+    snapshot.forEach(function (messages) {
+      messages.forEach(function (message) {
+        let cdata = message.val();  
+        tm.innerHTML += `<div class="message"> <strong>${cdata.username}</strong>: ${cdata.message}</div>`;
         tm.scrollTop = tm.scrollHeight;
       });
     });
   });
 
+
+// send message with username to the server and then saves to database.
 let send = document.querySelector("#send");
+
+//accessign delR button in the code.
 let delr = document.querySelector("#delr");
+
+
 send.addEventListener("click", () => {
   if (roomid === "bot") {
     let messages = document.querySelector(".messages");
@@ -76,26 +86,26 @@ send.addEventListener("click", () => {
   } else {
     let messages = document.querySelector(".messages");
     let msg = document.querySelector("#msg");
-    let username = document.querySelector("#username");
-    let message = document.createElement("div");
+     messages.innerHTML += `<div class="message"><strong>${username.value}:</strong> ${msg.value}</div>`;
 
-    message.innerHTML = `<div class="message"><strong>${username.value}:</strong> ${msg.value}</div>`;
-    messages.append(message);
+     //send message to the server.
     socket.emit("message-sent", msg.value, username.value);
     msg.value = "";
     messages.scrollTop = messages.scrollHeight;
   }
 });
 
+
+// message recieved form server.
 socket.on("message-received", (msg, user) => {
   let messages = document.querySelector(".messages");
-  let message = document.createElement("div");
-  message.innerHTML = `<div class="message"><strong>${user}:</strong> ${msg}</div>`;
-  messages.append(message);
-  msg.value = "";
+  messages.innerHTML += `<div class="message"><strong>${user}:</strong> ${msg}</div>`;
   messages.scrollTop = messages.scrollHeight;
 });
 
+
+
+//delete room from database.
 delr.addEventListener("click", (e) => {
   firebase.database().ref("/rooms").child(roomid).remove();
   setTimeout(() => {
