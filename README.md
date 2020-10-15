@@ -2,7 +2,7 @@
 
 Requirement
 
-To run this app on your computer you must have install,
+To run this app on your computer you must install,
 _ Node
 _ npm \* git
 
