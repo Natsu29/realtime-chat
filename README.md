@@ -2,10 +2,10 @@
 
 Requirement
 
-To run this app on your computer you must install,
-(1) Node
-(2) npm
-(3) git
+    To run this app on your computer you must install,
+        (1) Node
+        (2) npm
+        (3) git
 
 On your terminal or cmd type->
 
